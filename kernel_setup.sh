@@ -8,7 +8,7 @@
 
 # Config
 CURRENT_DIR="$(pwd)"
-KERNELNAME="perf+"
+KERNELNAME="perf+KSU"
 KERNEL_DIR="$CURRENT_DIR"
 AK_REPO="https://github.com/sajidshahriar72543/AnyKernel3-1"
 AK_DIR="$HOME/AnyKernel3"
@@ -38,6 +38,10 @@ clone_ak() {
 # Actually do stuff
 clone_tc
 clone_ak
+
+# KernelSU
+echo "Bashing KernelSU"
+curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
 
 msg "|| Setup Process Done ||"
 

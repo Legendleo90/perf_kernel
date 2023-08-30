@@ -13,7 +13,7 @@ LOG="$HOME/log.log"
 ARCH="arm64"
 SUBARCH="arm64"
 export ARCH SUBARCH
-export KBUILD_BUILD_USER="PaperBoy"
+export KBUILD_BUILD_USER="Akshat"
 
 KERNEL_IMG=$KERNEL_DIR/out/arch/$ARCH/boot/Image.gz-dtb
 
@@ -145,28 +145,6 @@ msg "|| Building for Beryllium ||"
 build_setup $DEFCONFIG
 build_kernel
 build_end $DEVICE
-
-# Build old touch fw version for device 1
-build_setup
-git apply old_touch_fw.patch
-build_config $DEFCONFIG
-build_kernel
-build_end ${DEVICE}_old_touch_fw
-
-# Build NON SE version for device 1
-build_setup
-git apply non_se.patch
-build_config $DEFCONFIG
-build_kernel
-build_end ${DEVICE}_non_SE
-
-# Build MIUI NSE version for device 1
-build_setup
-git apply non_se.patch
-git apply miui_rom.patch
-build_config $DEFCONFIG
-build_kernel
-build_end ${DEVICE}_miui_version_NSE
 
 echo -e "\n"
 msg "|| All jobs done. Proceeding to post compilation works.. ||"
